@@ -26,8 +26,6 @@ module Gemstrap
     rescue => e
       puts e.message
       puts e.backtrace.join("\n")
-      puts 'Rolling back'
-      rm_rf path
     end
 
     def method_missing(method, *args, &block)
