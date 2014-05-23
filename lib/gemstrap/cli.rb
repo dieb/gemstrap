@@ -28,7 +28,7 @@ module Gemstrap
           options[:authors_emails] = authors_emails.split(',')
         end
         opts.on('-s', '--summary SUMMARY', 'Gem summary. If not supplied takes description value.') do |summary|
-          options[:summary] = summary || options[:description]
+          options[:summary] = summary
         end
         opts.on('-g', '--github_user GITHUB_USER', 'Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME') do |github_user|
           options[:github_user] = github_user
@@ -36,10 +36,10 @@ module Gemstrap
         opts.on('-H', '--homepage HOMEPAGE', 'Homepage URL. Takes priority over the github_user parameter.') do |homepage|
           options[:homepage] = homepage
         end
-
       end
       optparse.parse!(arguments)
       fail 'Gem name cannot be empty' unless options[:gem_name]
+      options[:summary] ||= options[:description]
       options
     end
 
