@@ -61,8 +61,14 @@ module Gemstrap
     def generate!
       puts "   generate"
       mkdir_p(path)
+      copy_gitignore
+      copy_rakefile
+      copy_gemfile
+      generate_readme
       generate_gemspec
       mkdir_p(lib_path)
+      mkdir_p(lib_path.join(gem_name))
+      generate_lib_files
       mkdir_p(spec_path)
       cp(templates.join('Rakefile'), path)
     end
@@ -72,11 +78,43 @@ module Gemstrap
       super(path)
     end
 
+    def copy_gitignore
+      copy_template(templates.join('gitignore'), path.join('.gitignore'))
+    end
+
+    def copy_rakefile
+      copy_template(templates.join('Rakefile'), path.join('Rakefile'))
+    end
+
+    def copy_gemfile
+      copy_template(templates.join('Gemfile'), path.join('Gemfile'))
+    end
+
+    def generate_readme
+      generate_file(path.join('README.md'), render_template('README.md.erb'))
+    end
+
     def generate_gemspec
-      gemspec = Gemstrap::Template.render(templates.join('gemspec.erb'), context)
-      file = path.join("#{gem_name}.gemspec")
-      IO.write(file, gemspec)
-      say_created(file)
+      generate_file(path.join("#{gem_name}.gemspec"), render_template('gemspec.erb'))
+    end
+
+    def generate_lib_files
+      generate_file(lib_path.join("#{gem_name}.rb"), render_template('lib/root.rb.erb'))
+      generate_file(lib_path.join("#{gem_name}/version.rb"), render_template('lib/gem_name/version.rb.erb'))
+    end
+
+    def render_template(template_path)
+      Gemstrap::Template.render(templates.join(template_path), context)
+    end
+
+    def copy_template(from, to)
+      cp(from, to)
+      say_created(to)
+    end
+
+    def generate_file(path, contents)
+      IO.write(path, contents)
+      say_created(path)
     end
 
     def say_args(args)

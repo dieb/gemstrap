@@ -12,12 +12,12 @@ Gem::Specification.new do |s|
   s.email       = ['andre.dieb@gmail.com']
   s.homepage    = 'https://github.com/dieb/gemstrap'
   s.summary     = 'Fastest way to bootstrap a new ruby gem.'
-  s.description = 'Fastest way to bootstrap a new ruby gem.'
+  s.description = 'Command-line tool for bootstraping a new ruby gem in seconds.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['spec/**/*']
 
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rspec-core', '~> 0'
 end
