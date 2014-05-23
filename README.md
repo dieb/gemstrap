@@ -9,7 +9,10 @@ Fastest way to bootstrap a new ruby gem.
 
 ## Usage
 
-    $ gemstrap -n yourface_jokes -a 'John Dorian' -m jd@sacredheart.com -d "Generates your-face jokes. Guaranteed funny." -s "Your-face joke generator" -g dieb
+    $ gemstrap -n yourface_jokes -a 'John Dorian' -m jd@sacredheart.com
+      -d "Gem that generates your-face jokes. Guaranteed funny."
+      -s "Your-face joke generator gem."
+      -g dieb
 
        creating gem yourface_jokes
        gem data
