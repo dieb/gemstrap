@@ -1,0 +1,23 @@
+# encoding: utf-8
+
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+
+require '<%= gem_name %>/version'
+
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = '<%= gem_name %>'
+  s.version     = <%= gem_module %>::VERSION
+  <% if authors %>s.authors     = <%= authors %><% end %>
+  <% if authors_emails %>s.email       = <%= authors_emails %><% end %>
+  s.homepage    = 'https://github.com/<%= github_user %>/<%= gem_name %>'
+  s.summary     = '<%= summary_or_description %>'
+  s.description = '<%= description %>'
+  s.license     = 'MIT'
+
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.test_files = Dir['spec/**/*']
+
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rake'
+end
