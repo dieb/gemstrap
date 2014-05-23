@@ -1,8 +1,10 @@
 # gemstrap
 
 [![Build Status](https://travis-ci.org/dieb/gemstrap.svg?branch=master)](https://travis-ci.org/dieb/gemstrap)
+[![Code Climate](https://img.shields.io/codeclimate/github/dieb/gemstrap.svg)][codeclimate]
 
 [travis]: http://travis-ci.org/dieb/travis
+[codeclimate]: https://codeclimate.com/github/dieb/gemstrap
 
 Fastest way to bootstrap a new ruby gem.
 
