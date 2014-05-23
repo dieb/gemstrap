@@ -39,6 +39,7 @@ module Gemstrap
 
       end
       optparse.parse!(arguments)
+      fail 'Gem name cannot be empty' unless options[:gem_name]
       options
     end
 
