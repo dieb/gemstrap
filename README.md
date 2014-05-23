@@ -2,35 +2,22 @@
 
 Fastest way to bootstrap a new ruby gem.
 
+![Generation screenshot](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot.png "Generation screenshot")
+
 ## Installing
 
     $ gem install gemstrap
 
-
 ## Usage
 
-    $ gemstrap -n yourface_jokes -a 'John Dorian' -m jd@sacredheart.com
-      -d "Gem that generates your-face jokes. Guaranteed funny."
-      -s "Your-face joke generator gem."
-      -g dieb
-
-       creating gem yourface_jokes
-       gem data
-         using   gem_name         => yourface_jokes
-         using   authors          => ["John Dorian"]
-         using   authors_emails   => ["jd@sacredheart.com"]
-         using   description      => Generates your-face jokes. Guaranteed funny.
-         using   summary          => Your-face joke generator
-         using   github_user      => dieb
-       generate
-         create  yourface_jokes
-         create  yourface_jokes/.gitignore
-         create  yourface_jokes/README.md
-         create  yourface_jokes/yourface_jokes.gemspec
-         create  yourface_jokes/Rakefile
-         create  yourface_jokes/Gemfile
-         create  yourface_jokes/lib
-         create  yourface_jokes/lib/yourface_jokes.rb
-         create  yourface_jokes/lib/yourface_jokes/version.rb
-         create  yourface_jokes/spec
-         create  yourface_jokes/spec/spec_helper.rb
+    $  gemstrap -h
+    Usage: gemstrap [options]
+        -h, --help                       Display this message
+        -V, --version                    Display version
+        -n, --name GEM_NAME              Gem name
+        -d, --description GEM_DESC       Gem description
+        -a, --authors AUTHORS            CSV list of authors names (e.g. John Dorian, Christopher Turk)
+        -m, --emails AUTHORS_EMAILS      CSV list of corresponding authors emails (e.g. jd@sacredheart.com, turk@sacredheart.com)
+        -s, --summary SUMMARY            Gem summary. If not supplied takes description value.
+        -g, --github_user GITHUB_USER    Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME
+        -H, --homepage HOMEPAGE          Homepage URL. Takes priority over the github_user parameter.
