@@ -1,5 +1,9 @@
 # gemstrap
 
+[![Build Status](https://travis-ci.org/dieb/gemstrap.svg?branch=master)](https://travis-ci.org/dieb/gemstrap)
+
+[travis]: http://travis-ci.org/dieb/travis
+
 Fastest way to bootstrap a new ruby gem.
 
 ![Generation screenshot](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot.png "Generation screenshot")
