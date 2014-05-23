@@ -1,7 +1,7 @@
 # gemstrap
 
 [![Build Status](https://travis-ci.org/dieb/gemstrap.svg?branch=master)](https://travis-ci.org/dieb/gemstrap)
-[![Code Climate](https://img.shields.io/codeclimate/github/dieb/gemstrap.svg)][codeclimate]
+[![Code Climate](https://codeclimate.com/github/dieb/gemstrap.png)](https://codeclimate.com/github/dieb/gemstrap)
 
 [travis]: http://travis-ci.org/dieb/travis
 [codeclimate]: https://codeclimate.com/github/dieb/gemstrap
