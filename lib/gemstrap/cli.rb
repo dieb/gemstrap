@@ -1,70 +1,54 @@
-require 'pathname'
-require 'fileutils'
-
-require 'gemstrap/template'
+require 'optparse'
+require 'gemstrap/version'
+require 'gemstrap/generator'
 
 module Gemstrap
   class CLI
-    include FileUtils
+    def self.read(arguments=ARGV)
+      options = Hash.new
+      optparse = OptionParser.new do |opts|
+        opts.on('-h', '--help', 'Display this message') do
+          puts opts
+          exit
+        end
+        opts.on('-V', '--version', 'Display version') do
+          puts Gemstrap::VERSION
+          exit
+        end
+        opts.on('-n', '--name GEM_NAME', 'Gem name') do |gem_name|
+          options[:gem_name] = gem_name
+        end
+        opts.on('-d', '--description GEM_DESC', 'Gem description') do |description|
+          options[:description] = description
+        end
+        opts.on('-a', '--authors AUTHORS', 'CSV list of authors names (e.g. John Dorian, Christopher Turk)') do |authors|
+          options[:authors] = authors.split(',')
+        end
+        opts.on('-m', '--emails AUTHORS_EMAILS', 'CSV list of corresponding authors emails (e.g. jd@sacredheart.com, turk@sacredheart.com)') do |authors_emails|
+          options[:authors_emails] = authors_emails.split(',')
+        end
+        opts.on('-s', '--summary SUMMARY', 'Gem summary. If not supplied takes description value.') do |summary|
+          options[:summary] = summary || options[:description]
+        end
+        opts.on('-g', '--github_user GITHUB_USER', 'Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME') do |github_user|
+          options[:github_user] = github_user
+        end
+        opts.on('-H', '--homepage HOMEPAGE', 'Homepage URL. Takes priority over the github_user parameter.') do |homepage|
+          options[:homepage] = homepage
+        end
 
-    def self.read
-      {}
-    end
-
-    def self.run(options)
-      self.new(options).run
-    end
-
-    def initialize(options)
-      #@options = options
-      context
-    end
-
-    def run
-      create_directories
-      generate_gemspec
-    rescue => e
-      puts e.message
-      puts e.backtrace.join("\n")
-      puts 'Rolling back'
-      rm_rf path
-    end
-
-    def method_missing(method, *args, &block)
-      return context[method] if context.include?(method)
-      super
-    end
-
-    private
-
-    def options
-      @options ||= {
-        gem_name: 'foo',
-        authors: [],
-        authors_emails: [],
-        description: '',
-        summary_or_description: '',
-      }
-    end
-
-    def context
-      options[:templates] = Pathname.new(File.dirname(__FILE__)).join('template')
-      options[:path]      = Pathname.new('.').join(options[:gem_name])
-      options[:lib_path]  = options[:path].join('lib')
-      options[:spec_path] = options[:path].join('spec')
-      options[:gem_module] = options[:gem_name].split('-').map { |n| n.split('_') }.flatten.map(&:capitalize).join
+      end
+      optparse.parse!(arguments)
       options
     end
 
-    def create_directories
-      mkdir_p lib_path
-      mkdir   spec_path
-      cp      templates.join('Rakefile'), path
+    def self.run(options)
+      self.new(options)
     end
 
-    def generate_gemspec
-      gemspec = Gemstrap::Template.render(templates.join('gemspec.erb'), context)
-      IO.write(path.join("#{gem_name}.gemspec"), gemspec)
+    def initialize(options)
+      @generator = Gemstrap::Generator.new
+      @generator.run(options)
     end
   end
 end
