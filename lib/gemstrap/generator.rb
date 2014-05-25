@@ -48,7 +48,7 @@ module Gemstrap
     end
 
     def generate!
-      puts "   generate"
+      puts '   generate'
       mkdir_p(path)
       generate_root_files
       generate_lib_files
@@ -90,7 +90,7 @@ module Gemstrap
     end
 
     def say_args(args)
-      puts "   gem data"
+      puts '   gem data'
       args.each do |k, v|
         k = color(k, BOLD, true)
         puts "     using   #{k.ljust(28)} => #{v}"
@@ -99,12 +99,12 @@ module Gemstrap
 
     def say_created(item)
       created_color = color('create', GREEN, true)
-      puts "     #{created_color}  #{item.to_s}"
+      puts "     #{created_color}  #{item}"
     end
 
     def gem_name_to_module_name
-      name_parts = options[:gem_name].split('-').map { |n| n.split('_') }
-      name_parts.flatten.map(&:capitalize).join
+      name_parts = options[:gem_name].split('-').collect { |n| n.split('_') }
+      name_parts.flatten.collect(&:capitalize).join
     end
   end
 end

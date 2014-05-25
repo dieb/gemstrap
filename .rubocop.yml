@@ -1,0 +1,50 @@
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - 'browserlog.gemspec'
+  Exclude:
+  - 'spec/dummy/db/schema.rb'
+
+ParameterLists:
+  Max: 3
+  CountKeywordArgs: true
+
+MethodLength:
+  CountComments: false
+  Max: 10
+
+ClassLength:
+  CountComments: false
+  Max: 200
+
+CyclomaticComplexity:
+  Max: 12
+
+BlockNesting:
+  Max: 3
+
+Documentation:
+  Enabled: false
+
+RescueException:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+CollectionMethods:
+  PreferredMethods:
+    map:      'collect'
+    reduce:   'inject'
+    find:     'detect'
+    find_all: 'select'
+
+RegexpLiteral:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+EmptyLiteral:
+  Enabled: false

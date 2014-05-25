@@ -11,8 +11,8 @@ module Gemstrap
     CYAN    = "\e[36m"
     WHITE   = "\e[37m"
 
-    def color(text, color, bold=false)
-      bold  = bold ? BOLD : ""
+    def color(text, color, bold = false)
+      bold  = bold ? BOLD : ''
       "#{bold}#{color}#{text}#{CLEAR}"
     end
   end

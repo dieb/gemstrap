@@ -3,7 +3,6 @@ require 'ostruct'
 
 module Gemstrap
   class Template < OpenStruct
-
     def self.render(template_path, hash)
       Template.new(hash).render(template_path)
     end

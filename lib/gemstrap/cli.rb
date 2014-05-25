@@ -4,7 +4,7 @@ require 'gemstrap/generator'
 
 module Gemstrap
   class CLI
-    def self.read(arguments=ARGV)
+    def self.read(arguments = ARGV)
       options = Hash.new
       optparse = OptionParser.new do |opts|
         opts.on('-h', '--help', 'Display this message') do
@@ -44,7 +44,7 @@ module Gemstrap
     end
 
     def self.run(options)
-      self.new(options)
+      new(options)
     end
 
     def initialize(options)
