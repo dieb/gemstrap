@@ -27,3 +27,5 @@ Fastest way to bootstrap a new ruby gem.
         -s, --summary SUMMARY            Gem summary. If not supplied takes description value.
         -g, --github_user GITHUB_USER    Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME
         -H, --homepage HOMEPAGE          Homepage URL. Takes priority over the github_user parameter.
+
+        
