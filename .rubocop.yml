@@ -4,7 +4,7 @@ AllCops:
     - '**/Rakefile'
     - 'browserlog.gemspec'
   Exclude:
-  - 'spec/dummy/db/schema.rb'
+  - 'lib/gemstrap/cli.rb'
 
 ParameterLists:
   Max: 3
