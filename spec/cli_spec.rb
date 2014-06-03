@@ -8,14 +8,15 @@ describe Gemstrap::CLI do
   end
 
   context '#read' do
-    let(:args) do {
-      gem_name: 'yourface_jokes',
-      description: 'Generates your-face jokes. Guaranteed funny.',
-      summary: 'Your-face joke generator',
-      github_user: 'dieb',
-      authors: ['John Dorian'],
-      authors_emails: ['jd@sacredheart.com'],
-      homepage: 'http://yourface.io'
+    let(:args) do
+      {
+        gem_name: 'yourface_jokes',
+        description: 'Generates your-face jokes. Guaranteed funny.',
+        summary: 'Your-face joke generator',
+        github_user: 'dieb',
+        authors: ['John Dorian'],
+        authors_emails: ['jd@sacredheart.com'],
+        homepage: 'http://yourface.io'
       }
     end
     let(:sample_argv) do
@@ -31,14 +32,14 @@ describe Gemstrap::CLI do
 
     it 'does parse input arguments' do
       args.each do |key, expected|
-        options[key].should eql(expected)
+        expect(options[key]).to eql(expected)
       end
     end
 
     it 'does reuses description on summary' do
       sample_argv.delete args[:summary]
       sample_argv.delete '-s'
-      options[:summary].should eql(args[:description])
+      expect(options[:summary]).to eql(args[:description])
     end
   end
 end

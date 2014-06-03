@@ -1,15 +1,7 @@
 require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
-
-begin
-  require 'rubocop/rake_task'
-  Rubocop::RakeTask.new
-rescue LoadError
-  desc 'Run RuboCop'
-  task :rubocop do
-    $stderr.puts 'Rubocop is disabled'
-  end
-end
+RuboCop::RakeTask.new
 
 task default: [:spec, :rubocop]
