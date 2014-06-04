@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../lib/gemstrap/cli.rb'
 describe Gemstrap::CLI do
   it 'does raise an error on missing name' do
     expect do
-      Gemstrap::CLI.read([])
+      Gemstrap::CLI.read(['-n'])
     end.to raise_error
   end
 

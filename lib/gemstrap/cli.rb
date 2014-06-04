@@ -37,19 +37,26 @@ module Gemstrap
           options[:homepage] = homepage
         end
         opts.on('-i', '--interactive', 'Interactive mode. Prompt for user the parameters for gem generate.') do
-          gem_name = prompt('Gem name: ')
-          options[:gem_name] = gem_name if gem_name != ''
-          options[:description] = prompt('Gem description: ')
-          options[:authors] = prompt('Authors: ').split(',')
-          options[:authors_emails] = prompt('Authors emails: ').split(',')
-          options[:summary] = prompt('Summary: ')
-          options[:github_user] = prompt('Github user: ')
-          options[:homepage] = prompt('Homepage: ')
+          options = run_interactive_mode
         end
       end
       optparse.parse!(arguments)
+      options = run_interactive_mode if options.empty?
       fail 'Gem name cannot be empty' unless options[:gem_name]
       options[:summary] ||= options[:description]
+      options
+    end
+
+    def self.run_interactive_mode
+      options = Hash.new
+      gem_name = prompt('Gem name: ')
+      options[:gem_name] = gem_name unless gem_name.empty?
+      options[:description] = prompt('Gem description: ')
+      options[:authors] = prompt('Authors: ').split(',')
+      options[:authors_emails] = prompt('Authors emails: ').split(',')
+      options[:summary] = prompt('Summary: ')
+      options[:github_user] = prompt('Github user: ')
+      options[:homepage] = prompt('Homepage: ')
       options
     end
 
