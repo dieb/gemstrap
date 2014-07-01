@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   <% if authors %>s.authors     = <%= authors %><% end %>
   <% if authors_emails %>s.email       = <%= authors_emails %><% end %>
   s.homepage    = <% if homepage.size > 0 %>'<%= homepage %>'<% elsif github_user %>'https://github.com/<%= github_user %>/<%= gem_name %>'<% end %>
-  s.summary     = '<%= summary %>'
-  s.description = '<%= description %>'
+  s.summary     = <%= summary.dump %>
+  s.description = <%= description.dump %>
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
