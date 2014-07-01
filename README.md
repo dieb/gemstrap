@@ -8,7 +8,11 @@
 
 Fastest way to bootstrap a new ruby gem.
 
-![Generation screenshot](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot.png "Generation screenshot")
+![Command-line mode](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot.png "Command line mode")
+
+Interactive mode:
+
+![Interactive mode](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot2.png "Interactive mode")
 
 ## Installing
 
@@ -31,4 +35,3 @@ $ gem install gemstrap
         -H, --homepage HOMEPAGE          Homepage URL. Takes priority over the github_user parameter.
         -i, --interactive                Interactive mode. Prompt for user the parameters for gem generate.
 
-        
