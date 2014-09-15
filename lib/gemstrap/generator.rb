@@ -57,9 +57,11 @@ module Gemstrap
     end
 
     def generate_root_files
-      %w(.gitignore Rakefile Gemfile).each do |file|
+      %w(Rakefile Gemfile).each do |file|
         copy_template(templates.join(file), path.join(file))
       end
+      copy_template(templates.join('gitignore'), path.join('.gitignore'))
+
       generate_file(path.join('README.md'), render_template('README.md.erb'))
       generate_file(path.join("#{gem_name}.gemspec"), render_template('gemspec.erb'))
     end
