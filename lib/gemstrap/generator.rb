@@ -53,7 +53,6 @@ module Gemstrap
       generate_root_files
       generate_lib_files
       mkdir_p(spec_path)
-      cp(templates.join('Rakefile'), path)
     end
 
     def generate_root_files
