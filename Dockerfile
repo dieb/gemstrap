@@ -1,9 +1,9 @@
 FROM ubuntu:trusty
 MAINTAINER Andre Dieb Martins <andre.dieb@gmail.com>
 
-RUN apt-get update -q
-RUN apt-get install -qy ruby2.0 ruby2.0-dev build-essential
-RUN gem2.0 install bundler && \
+RUN apt-get update -q && \
+    apt-get install -qy ruby2.0 ruby2.0-dev && \
+    gem2.0 install bundler && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
