@@ -11,7 +11,7 @@ module Gemstrap
 
     def run(args)
       options.merge!(args)
-      puts "   creating gem #{yellow(gem_name)}"
+      puts "gemstrap: creating gem #{yellow(gem_name)}"
       say_args(args)
       generate!
     rescue => e
@@ -48,11 +48,12 @@ module Gemstrap
     end
 
     def generate!
-      puts '   generate'
+      puts 'gemstrap: generating...'
       mkdir_p(path)
       generate_root_files
       generate_lib_files
       mkdir_p(spec_path)
+      puts 'gemstrap: done!'
     end
 
     def generate_root_files
@@ -91,14 +92,13 @@ module Gemstrap
     end
 
     def say_args(args)
-      puts '   gem data'
       args.each do |k, v|
-        puts "     using   #{bold(k).ljust(28)} => #{v}"
+        puts "  using   #{white(bold(k.to_s)).ljust(28)} => #{v}"
       end
     end
 
     def say_created(item)
-      puts "     #{green(bold('create'))}  #{item}"
+      puts "  #{green(bold('create'))}  #{item}"
     end
 
     def gem_name_to_module_name
