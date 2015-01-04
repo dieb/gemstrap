@@ -23,4 +23,7 @@ ADD . /gemstrap
 
 EXPOSE 8080
 
-ENTRYPOINT ["ruby2.0", "./bin/gemstrap"]
+VOLUME ["/build"]
+WORKDIR /build
+
+ENTRYPOINT ["ruby2.0", "/gemstrap/bin/gemstrap"]

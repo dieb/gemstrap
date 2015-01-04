@@ -42,9 +42,11 @@ Usage: gemstrap [options]
 Or if you prefer through Docker:
 
 ```bash
-$ docker run --rm -ti dieb/gemstrap
+$ docker run --rm -ti -v $(pwd):/build dieb/gemstrap
 gemstrap: starting interactive mode
 gemstrap: please type in the required fields:
   gem name: my_gem
   ...
 ```
+
+Please note we bind the current folder to /build, which is where gemstrap spits out the new gem.
