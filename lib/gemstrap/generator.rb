@@ -93,7 +93,7 @@ module Gemstrap
 
     def say_args(args)
       args.each do |k, v|
-        puts "  using   #{white(bold(k.to_s)).ljust(28)} => #{v}"
+        puts "  #{white(bold('using'))}   #{k.to_s.ljust(16)} => #{v}"
       end
     end
 
