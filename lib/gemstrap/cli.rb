@@ -56,8 +56,24 @@ module Gemstrap
       puts "gemstrap: starting interactive mode"
       puts 'gemstrap: please type in the required fields:'
       options[:gem_name] = prompt('  gem name: ')
-      options[:authors] = prompt('  authors: ').split(',')
-      options[:authors_emails] = prompt('  authors emails: ').split(',')
+
+      unless `which git`.empty?
+        git_name = `git config --global --get user.name`.strip
+        git_email = `git config --global --get user.email`.strip
+        git_author = "#{git_name} <#{git_email}>"
+        author = prompt("  author (press enter to autofill with #{git_author}): ")
+        if author.empty?
+          options[:authors] = [git_name]
+          options[:authors_emails] = [git_email]
+        else
+          options[:authors] = [author.split(' <').first]
+          options[:authors_emails] = [author.split(' <').last[0..-2]]
+        end
+      else
+        options[:authors] = [prompt('  author: ')]
+        options[:authors_emails] = [prompt('  author email: ')]
+      end
+
       puts 'gemstrap: please type in the optional fields (hit ENTER to skip):'
       options[:description] = prompt('  gem description: ')
       options[:summary] = prompt('  gem summary: ')
