@@ -20,18 +20,35 @@ Interactive mode:
 $ gem install gemstrap
 ```
 
+Alternatively gemstrap also has a Docker image [dieb/gemstrap](https://registry.hub.docker.com/u/dieb/gemstrap/):
+
+```bash
+$ docker pull dieb/gemstrap
+```
+
 ## Usage
 
-    $  gemstrap -h
-    Usage: gemstrap [options]
-        -h, --help                       Display this message
-        -V, --version                    Display version
-        -n, --name GEM_NAME              Gem name
-        -d, --description GEM_DESC       Gem description
-        -a, --authors AUTHORS            CSV list of authors names (e.g. John Dorian, Christopher Turk)
-        -m, --emails AUTHORS_EMAILS      CSV list of corresponding authors emails (e.g. jd@sacredheart.com, turk@sacredheart.com)
-        -s, --summary SUMMARY            Gem summary. If not supplied takes description value.
-        -g, --github_user GITHUB_USER    Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME
-        -H, --homepage HOMEPAGE          Homepage URL. Takes priority over the github_user parameter.
-        -i, --interactive                Interactive mode. Prompt for user the parameters for gem generate.
+```bash
+$  gemstrap -h
+Usage: gemstrap [options]
+    -h, --help                       Display this message
+    -V, --version                    Display version
+    -n, --name GEM_NAME              Gem name
+    -d, --description GEM_DESC       Gem description
+    -a, --authors AUTHORS            CSV list of authors names (e.g. John Dorian, Christopher Turk)
+    -m, --emails AUTHORS_EMAILS      CSV list of corresponding authors emails (e.g. jd@sacredheart.com, turk@sacredheart.com)
+    -s, --summary SUMMARY            Gem summary. If not supplied takes description value.
+    -g, --github_user GITHUB_USER    Github user. If not blank, homepage will be set to GITHUB_USER/GEM_NAME
+    -H, --homepage HOMEPAGE          Homepage URL. Takes priority over the github_user parameter.
+    -i, --interactive                Interactive mode. Prompt for user the parameters for gem generate.
+```
 
+Or if you prefer through Docker:
+
+```bash
+$ docker run --rm -ti dieb/gemstrap
+gemstrap: starting interactive mode
+gemstrap: please type in the required fields:
+  gem name: my_gem
+  ...
+```
