@@ -49,8 +49,7 @@ module Gemstrap
 
     def self.run_interactive_mode
       options = Hash.new
-      gem_name = prompt('Gem name: ')
-      options[:gem_name] = gem_name unless gem_name.empty?
+      options[:gem_name] = prompt('Gem name: ')
       options[:description] = prompt('Gem description: ')
       options[:authors] = prompt('Authors: ').split(',')
       options[:authors_emails] = prompt('Authors emails: ').split(',')
