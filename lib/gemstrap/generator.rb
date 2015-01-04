@@ -1,17 +1,17 @@
 require 'pathname'
 require 'fileutils'
+require 'term/ansicolor'
 
 require 'gemstrap/template'
-require 'gemstrap/colorize'
 
 module Gemstrap
   class Generator
     include FileUtils
-    include Colorize
+    include Term::ANSIColor
 
     def run(args)
       options.merge!(args)
-      puts "   creating gem #{color(gem_name, YELLOW)}"
+      puts "   creating gem #{yellow(gem_name)}"
       say_args(args)
       generate!
     rescue => e
@@ -93,14 +93,12 @@ module Gemstrap
     def say_args(args)
       puts '   gem data'
       args.each do |k, v|
-        k = color(k, BOLD, true)
-        puts "     using   #{k.ljust(28)} => #{v}"
+        puts "     using   #{bold(k).ljust(28)} => #{v}"
       end
     end
 
     def say_created(item)
-      created_color = color('create', GREEN, true)
-      puts "     #{created_color}  #{item}"
+      puts "     #{green(bold('create'))}  #{item}"
     end
 
     def gem_name_to_module_name
