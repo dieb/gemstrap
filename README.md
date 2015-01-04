@@ -16,7 +16,7 @@ Fastest way to bootstrap a new ruby gem.
 $ gem install gemstrap
 ```
 
-Alternatively gemstrap also has a Docker image [dieb/gemstrap](https://registry.hub.docker.com/u/dieb/gemstrap/):
+Alternatively use our Docker image [dieb/gemstrap](https://registry.hub.docker.com/u/dieb/gemstrap/):
 
 ```bash
 $ docker pull dieb/gemstrap
