@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.version     = <%= gem_module %>::VERSION
   <% if authors %>s.authors     = <%= authors %><% end %>
   <% if authors_emails %>s.email       = <%= authors_emails %><% end %>
-  s.homepage    = <% if homepage.size > 0 %>'<%= homepage %>'<% elsif github_user %>'https://github.com/<%= github_user %>/<%= gem_name %>'<% end %>
+  s.homepage    = <% if homepage.size > 0 %>'<%= homepage %>'<% end %>
   s.summary     = <%= summary.dump %>
   s.description = <%= description.dump %>
   s.license     = 'MIT'

@@ -42,20 +42,24 @@ module Gemstrap
       end
       optparse.parse!(arguments)
       options = run_interactive_mode if options.empty?
-      fail 'Gem name cannot be empty' unless options[:gem_name]
+      fail('error: gem name cannot be empty') if options[:gem_name].size == 0
+      options[:homepage] ||= "https://github.com/#{options[:github_user]}/#{options[:gem_name]}"
       options[:summary] ||= options[:description]
       options
     end
 
     def self.run_interactive_mode
       options = Hash.new
-      options[:gem_name] = prompt('Gem name: ')
-      options[:description] = prompt('Gem description: ')
-      options[:authors] = prompt('Authors: ').split(',')
-      options[:authors_emails] = prompt('Authors emails: ').split(',')
-      options[:summary] = prompt('Summary: ')
-      options[:github_user] = prompt('Github user: ')
-      options[:homepage] = prompt('Homepage: ')
+      puts 'gemstrap: starting interactive mode'
+      puts 'gemstrap: please type in the required fields:'
+      options[:gem_name] = prompt('> gem name: ')
+      options[:authors] = prompt('> authors: ').split(',')
+      options[:authors_emails] = prompt('> authors emails: ').split(',')
+      puts 'gemstrap: please type in the optional fields (hit ENTER to skip):'
+      options[:description] = prompt('> gem description: ')
+      options[:summary] = prompt('> gem summary: ')
+      options[:github_user] = prompt('> github user: ')
+      options[:homepage] = prompt("> homepage (press ENTER to autofill with https://github.com/#{options[:github_user]}/#{options[:gem_name]}): ")
       options
     end
 
