@@ -43,7 +43,7 @@ module Gemstrap
       optparse.parse!(arguments)
       options = run_interactive_mode if options.empty?
       fail('error: gem name cannot be empty') if options[:gem_name].size == 0
-      options[:homepage] ||= "https://github.com/#{options[:github_user]}/#{options[:gem_name]}"
+      options[:homepage] = "https://github.com/#{options[:github_user]}/#{options[:gem_name]}" if options[:homepage].size == 0
       options[:summary] ||= options[:description]
       options
     end
