@@ -1,9 +1,12 @@
 require 'optparse'
 require 'gemstrap/version'
 require 'gemstrap/generator'
+require 'term/ansicolor'
 
 module Gemstrap
   class CLI
+    extend Term::ANSIColor
+
     def self.read(arguments = ARGV)
       options = Hash.new
       optparse = OptionParser.new do |opts|
@@ -50,16 +53,16 @@ module Gemstrap
 
     def self.run_interactive_mode
       options = Hash.new
-      puts 'gemstrap: starting interactive mode'
+      puts "gemstrap: starting interactive mode"
       puts 'gemstrap: please type in the required fields:'
-      options[:gem_name] = prompt('> gem name: ')
-      options[:authors] = prompt('> authors: ').split(',')
-      options[:authors_emails] = prompt('> authors emails: ').split(',')
+      options[:gem_name] = prompt('  gem name: ')
+      options[:authors] = prompt('  authors: ').split(',')
+      options[:authors_emails] = prompt('  authors emails: ').split(',')
       puts 'gemstrap: please type in the optional fields (hit ENTER to skip):'
-      options[:description] = prompt('> gem description: ')
-      options[:summary] = prompt('> gem summary: ')
-      options[:github_user] = prompt('> github user: ')
-      options[:homepage] = prompt("> homepage (press ENTER to autofill with https://github.com/#{options[:github_user]}/#{options[:gem_name]}): ")
+      options[:description] = prompt('  gem description: ')
+      options[:summary] = prompt('  gem summary: ')
+      options[:github_user] = prompt('  github user: ')
+      options[:homepage] = prompt("  homepage (press ENTER to autofill with https://github.com/#{options[:github_user]}/#{options[:gem_name]}): ")
       options
     end
 
