@@ -10,10 +10,6 @@ Fastest way to bootstrap a new ruby gem.
 
 ![Command-line mode](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot.png "Command line mode")
 
-Interactive mode:
-
-![Interactive mode](https://raw.githubusercontent.com/dieb/gemstrap/master/screenshot2.png "Interactive mode")
-
 ## Installing
 
 ```shell
