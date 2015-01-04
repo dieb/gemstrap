@@ -4,6 +4,6 @@ group :development do
   gem 'rubocop'
 end
 
-gem 'coveralls', require: false
+gem 'coveralls', group: :development, require: false
 
 gemspec
