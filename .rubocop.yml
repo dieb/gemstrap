@@ -48,3 +48,7 @@ LineLength:
 
 EmptyLiteral:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: true
+
