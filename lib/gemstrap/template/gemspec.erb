@@ -16,7 +16,9 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir['{lib,bin}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.executables = Dir['bin/*'].map { |f| File.basename(f) }
   s.test_files = Dir['spec/**/*']
+  s.require_paths = ['lib']
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec-core'
